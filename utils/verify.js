@@ -10,7 +10,7 @@ const verifyUser = async(req, res, next) => {
      try {
     const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
     console.log(token);
-    const decoded = jwt.verify(token, secretKey);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_TOKEN);
     req.user = decoded;
     next();
   } catch (error) {
